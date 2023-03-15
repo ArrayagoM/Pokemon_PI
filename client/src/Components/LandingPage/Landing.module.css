@@ -1,0 +1,84 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f1c40f; 
+  }
+
+  .contenedor{
+    background-image: url('../../img/Pokémon-Super-Mystery-Dungeon1-720x405.webp'); /*cambia este valor por la ruta a tu imagen*/
+    background-size: cover; /*para que la imagen se ajuste a la pantalla*/
+    background-repeat: no-repeat;
+  }
+  
+  .element {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .element h1 {
+    font-size: 2rem;
+    color: #c0392b;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+  
+  .element button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .element button:hover {
+    background-color: #c0392b;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+  }
+
+@media only screen and (max-width: 768px) {
+  /* Estilos para pantallas de 768px o menos */
+  body {
+    background-size: contain;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  /* Estilos para pantallas de 480px o menos */
+  body {
+    background-size: cover;
+  }
+}
+
+.toHome {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.toHome:hover {
+    background-color: #c0392b;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+}
+
+.welcome {
+    font-size: 3rem;
+    color: #c0392b;
+    text-shadow: 2px 2px 5px rgba(218, 192, 192, 0.3);
+}
+
+.miname {
+    font-size: 1.5rem;
+    color: #e4c7c7;
+}

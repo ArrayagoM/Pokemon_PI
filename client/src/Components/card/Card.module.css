@@ -1,0 +1,147 @@
+.container {
+  border: 1px solid black;
+  width: 220px;
+  margin: 20px;
+  border-radius: 16px;
+  }
+  .element{
+    position: relative;
+    border-radius: 16px;
+    height: 150px;
+  }
+.elem
+
+  .name {
+    position: absolute;
+    top: -100%;
+    left: 90%;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .image {
+    position: absolute;
+    left: 40%;
+    top: 3%;
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  
+  .type {
+    color: #f2f2f5;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid black;
+
+  }
+
+  .types1{
+    position: absolute;
+    left: 4%;
+  }
+  .types2{
+    position: absolute;
+    top: 10%;
+    left: 4%;
+  }
+  
+  .id {
+    position: absolute;
+    top: -29%;
+    left: 3%;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+    color: #473e3e;
+  }
+  
+  .grass {
+    color: #78C850;
+    background-image: linear-gradient(to top, rgb(109, 163, 108) 0%, rgba(208, 212, 208, 0.534) 75%,  transparent 100%);
+}
+
+
+  
+  .fire {
+    color: #F08030;
+    background-image: linear-gradient(to top, #ffa856 0%, #ffa8563d 75%, transparent 100%);
+  }
+  
+  .water {
+    color: #6890F0;
+    background-image: linear-gradient(to top, #58ABF6 0%, #58acf604 50%, transparent 100%);
+  }
+  
+  .electric {
+    color: #F8D030;
+    background-image: linear-gradient(to top, #FFD770 0%, #ffd67036 50%, transparent 100%);
+  }
+  
+  .ice {
+    color: #98D8D8;
+    background-image: linear-gradient(to top, #A0E7E5 0%, #a0e7e541 50%, transparent 100%);
+  }
+  
+  .fighting {
+    color: #C03028;
+    background-image: linear-gradient(to top, #EB4971 0%, #eb497200 50%, transparent 100%);
+  }
+  
+  .poison {
+    color: #A040A0;
+    background-image: linear-gradient(to top, #9F5BBA 0%, #9f5bba00 50%, transparent 100%);
+  }
+  
+  .ground {
+    color: #E0C068;
+    background-image: linear-gradient(to top, #F78551 0%, #f7865100 50%, transparent 100%);
+  }
+  
+  .flying {
+    color: #A890F0;
+    background-image: linear-gradient(to top, #A1BBEC 0%, #a1bbec00 50%, transparent 100%);
+  }
+  
+  .psychic {
+    color: #F85888;
+    background-image: linear-gradient(to top, #FF6568 0%, #ff656800 50%, transparent 100%);
+  }
+  
+  .bug {
+    color: #A8B820;
+    background-image: linear-gradient(to top, #8BD674 0%, #8bd67400 50%, transparent 100%);
+  }
+  
+  .rock {
+    color: #B8A038;
+    background-image: linear-gradient(to top, #D4C294 0%, #d4c29400 50%, transparent 100%);
+  }
+  
+  .ghost {
+    color: #705898;
+    background-image: linear-gradient(to top, #8571BE 0%, #8671be00 50%, transparent 100%);
+  }
+  
+  .dragon {
+    color: #7038F8;
+    background-image: linear-gradient(to top, #7383B9 0%, #7383b902 50%, transparent 100%);
+  }
+  
+  .dark {
+    color: #705848;
+    background-image: linear-gradient(to top, #8E6856 0%, #8e685600 50%, transparent 100%);
+  }
+  
+  .steel {
+    color: #B8B8D0;
+    background-image: linear-gradient(to top, #4C8D7B 0%, #4c8d7b00 50%, transparent 100%);
+  }
+  
+  .fairy {
+    color: #EE99AC;
+    background-image: linear-gradient(to top, #D685AD 0%, rgba(214, 133, 173, 0) 50%, transparent 100%);
+    
+  }

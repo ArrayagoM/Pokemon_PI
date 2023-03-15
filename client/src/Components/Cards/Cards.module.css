@@ -1,0 +1,34 @@
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 16px;
+  background-color: rgba(100, 94, 94, 0.226);
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.element {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+
+.arrowLeft {
+ border: none;
+ background-color: rgba(240, 248, 255, 0);
+}
+
+.arrowRight {
+border: none;
+background-color: rgba(240, 248, 255, 0);
+}
