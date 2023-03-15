@@ -37,6 +37,11 @@ const Cards = () => {
 
   return (
     <div className={style.contenedor}>
+      <div className={style.buttonsContainer}>
+        <button className={`${style.arrowLeft} ${style.arrow}`} onClick={handlePrevPage}>⏮</button>
+        <span>{`${currentPage} of ${totalPages}`}</span>
+        <button className={`${style.arrowRight} ${style.arrow}`} onClick={handleNextPage}>⏭</button>
+      </div>
       <div className={style.element}>
         {currentPokemons.map((pokemon) => {
           const types = pokemon.types.map((type) => type.name).join(', ');

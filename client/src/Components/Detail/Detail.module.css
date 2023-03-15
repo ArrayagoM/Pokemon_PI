@@ -1,0 +1,74 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    height: 600px;
+    width: 700px;
+    position: relative;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.308);
+}
+
+.cont_img{
+    position: absolute;
+    border-radius: 80%;
+    top: 5%;
+    left: 1%;
+    width: 400px;
+    height: 400px;
+}
+
+.type_badge {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  
+
+.id{
+    position: absolute;
+    bottom: 5%;
+    left: 12%;
+    transform: scale(2.5);
+}
+.img{
+    position: absolute;
+    left: 0%;
+    width: 420px;
+}
+.name{
+    position: absolute;
+    left: 60%;
+    top: -3%;
+}
+
+.detail{
+    position: absolute;
+    left: 65%;
+    top: 15%;
+}
+
+.progressBar {
+    display: inline-block;
+    width: 100px;
+    height: 10px;
+    border: 1px solid black;
+    overflow: hidden;
+  }
+  
+  .progress {
+    display: block;
+   
+  } 
+
+.poke_button{
+    position: absolute;
+    top: 25%;
+    left: 45%;
+}
