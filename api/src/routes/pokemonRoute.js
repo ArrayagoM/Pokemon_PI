@@ -31,6 +31,10 @@ router.get('/', async (req, res) => {
           through: Pokemon_Type
         }
       });
+
+
+   
+      
   
       const response = await fetch(API_URL+name);
       const data = await response.json();
@@ -88,6 +92,41 @@ router.get('/', async (req, res) => {
       res.status(400).send({ error: error.message });
     }
   });
+
+  router.put('/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { name, image, life, attack, defense, speed, height, weight } = req.body;
+  
+      const updatedPokemon = await Pokemon.update(
+        { name, image, life, attack, defense, speed, height, weight },
+        { where: { id } }
+      );
+  
+      if (updatedPokemon[0] === 0) throw new Error('El pokemon no existe');
+  
+      res.status(200).json({ message: 'Pokemon actualizado correctamente' });
+    } catch (error) {
+      res.status(400).send({ error: error.message });
+    }
+  });
+
+
+  router.delete('/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      const deletedRows = await Pokemon.destroy({ where: { id } });
+  
+      if (deletedRows === 0) throw new Error('El pokemon no existe');
+  
+      res.status(200).json({ message: 'Pokemon eliminado correctamente' });
+    } catch (error) {
+      res.status(400).send({ error: error.message });
+    }
+  });
+  
+  
 
 
 module.exports = router;

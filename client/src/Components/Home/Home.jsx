@@ -1,12 +1,22 @@
 import React from "react";
 import Cards from "../Cards/Cards";
-
+import { useDispatch } from 'react-redux';
+import NavBar from "../NavBar/NavBar";
+import SearchBar from "../SearchBar/SearchBar";
+import { order, orderAttack, allPokedex, orderDefense, orderSpeed } from "../../reducer/action";
 const Home = () => {
-
+  const dispatch = useDispatch();
 
   return(
     <div>
-      <h1>Hello Home</h1>
+      <NavBar/>
+      <button onClick={() => dispatch(order())}>A a Z</button>
+      <button onClick={() => dispatch(orderAttack())}>Attack Max & Min</button>
+      <button onClick={() => dispatch(orderDefense())}>Defense Max & Min</button>
+      <button onClick={() => dispatch(orderSpeed())} >Speed Max & Min</button>
+      <button onClick={() => dispatch(allPokedex())}>All Pokemons</button>
+      <SearchBar/>
+      <h1>Welcome to Home</h1>
       <Cards/>
     </div>
   )

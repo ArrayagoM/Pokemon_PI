@@ -1,5 +1,7 @@
 export const getTypeClass = (type) => {
     switch (type) {
+      case "normal":
+        return "normal";
       case "grass":
       case "grass, flying":
       case "grass, poison":
