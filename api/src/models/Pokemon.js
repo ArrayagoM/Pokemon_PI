@@ -43,6 +43,10 @@ module.exports = (sequelize) => {
     weight: {
       type: DataTypes.REAL,
       allowNull: true
+    },
+    isLegendary: {
+      type: DataTypes.BOOLEAN,
+     defaultValue: false
     }
   },{
     timestamps: false,

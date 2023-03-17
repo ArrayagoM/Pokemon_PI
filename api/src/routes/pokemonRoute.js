@@ -73,6 +73,27 @@ router.get('/', async (req, res) => {
   })
   
 
+
+
+  router.get('/leg/legendary', async (req, res) => {
+    try {
+      const legendary = await Pokemon.findAll({
+        where: { isLegendary: true },
+        include: [
+          {
+            model: Type,
+            through: Pokemon_Type
+          }
+        ]
+      });
+      res.status(200).json(legendary);
+    } catch (error) {
+      res.status(404).send({ error: error.message });
+    }
+  });
+  
+
+
   router.post('/', async (req, res) => {
     try {
         const { name, image, life, attack, defense, speed, height, weight } = req.body
@@ -96,10 +117,10 @@ router.get('/', async (req, res) => {
   router.put('/:id', async (req, res) => {
     try {
       const { id } = req.params;
-      const { name, image, life, attack, defense, speed, height, weight } = req.body;
+      const { name, image, life, attack, defense, speed, height, weight, isLegendary } = req.body;
   
       const updatedPokemon = await Pokemon.update(
-        { name, image, life, attack, defense, speed, height, weight },
+        { name, image, life, attack, defense, speed, height, weight, isLegendary },
         { where: { id } }
       );
   

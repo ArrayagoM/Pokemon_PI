@@ -1,8 +1,9 @@
-import { ALL_POKEMONS, SORT_POKEMON, SORT_ATTACK_LEVEL, SORT_DEFENSE_LEVEL, SORT_SPEED_LEVEL } from "./antion_type";
+import { ALL_POKEMONS, SORT_POKEMON, SORT_ATTACK_LEVEL, SORT_DEFENSE_LEVEL, SORT_SPEED_LEVEL, LEGENDARY_POKE } from "./antion_type";
 
 const initialState = {
   allPokemons: [],
-  sortDirection: "asc" // por defecto, ordenar de la A a la Z
+  sortDirection: "asc", // por defecto, ordenar de la A a la Z
+  allLegendary: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -12,6 +13,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         allPokemons: action.payload
       };
+      case LEGENDARY_POKE:
+        return{
+          ...state,
+          allLegendary: action.payload
+        }
     case SORT_POKEMON:
       const { sortDirection } = state;
       const sortedPokemons = state.allPokemons.slice().sort((a, b) => {

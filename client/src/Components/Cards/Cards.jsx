@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { allPokedex } from "../../reducer/action";
+import { allPokedex, IsLegendary } from "../../reducer/action";
 import Card from "../card/Card";
 import style from './Cards.module.css';
 
@@ -12,6 +12,7 @@ const Cards = () => {
 
   useEffect(()=> {
     dispatch(allPokedex());
+    dispatch(IsLegendary());
   },[])
   
   // calculate number of pages

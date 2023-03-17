@@ -1,4 +1,4 @@
-import { ALL_POKEMONS, SORT_POKEMON, SORT_ATTACK_LEVEL, SORT_DEFENSE_LEVEL, SORT_SPEED_LEVEL } from "./antion_type";
+import { ALL_POKEMONS, SORT_POKEMON, SORT_ATTACK_LEVEL, SORT_DEFENSE_LEVEL, SORT_SPEED_LEVEL, LEGENDARY_POKE } from "./antion_type";
 import axios from 'axios';
 
 export const allPokedex = () => {
@@ -20,4 +20,9 @@ export const orderDefense = () => {
 export const orderSpeed = () => {
     return { type: SORT_SPEED_LEVEL }
 }
-
+  export const IsLegendary = () => {
+    return async (dispatch) =>{
+        const legendary =  (await axios('http://localhost:3001/pokemons/leg/legendary')).data;
+        dispatch({ type: LEGENDARY_POKE, payload: legendary });
+    }
+  }
