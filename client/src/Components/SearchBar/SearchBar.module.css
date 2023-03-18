@@ -1,0 +1,29 @@
+.conteiner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 12px;
+    border-radius: 16px;
+    width: 500px;
+    padding: 16%;
+    background-color: rgba(100, 94, 94, 0.226);
+}
+
+.element{
+    border: 1px solid black;
+    position: relative;
+    border-radius: 50%;
+    align-items: center;
+    height: 170px;
+    width: 170px;
+}
+
+.image{
+    width: 150px;
+}
+.name{
+    position: absolute;
+    top: 0%;
+    left: 20%;
+    
+}

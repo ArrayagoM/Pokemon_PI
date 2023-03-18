@@ -96,23 +96,47 @@ router.get('/', async (req, res) => {
 
   router.post('/', async (req, res) => {
     try {
-        const { name, image, life, attack, defense, speed, height, weight } = req.body
-        if(!name || !image || !life || !attack || !defense ) throw new Error('Faltan datos')
+      const { name, image, life, attack, defense, speed, height, weight,  types } = req.body;
+      if (!name || !image || !life || !attack || !defense || !speed || !height || !weight) {
+        throw new Error('Faltan datos');
+      }
+  
+      // Obtener los IDs de los tipos del Pokemon
+      const typeNames = types.map(type => type.name);
+      const typesData = await Type.findAll({
+        where: { name: { [Op.in]: typeNames } }
+      });
+      const typeIds = typesData.map(type => type.id);
+  
+      // Crear el Pokemon
       const newPokemon = await createPokemon({
         name,
-        image, 
-        life, 
-        attack, 
-        defense, 
-        speed, 
-        height, 
+        image,
+        life,
+        attack,
+        defense,
+        speed,
+        height,
         weight
-    });
+       
+      });
+  
+      // Agregar los tipos del Pokemon
+      const pokemonTypeData = typeIds.map(typeId => ({
+        pokemonId: newPokemon.id,
+        typeId
+      }));
+      await Pokemon_Type.bulkCreate(pokemonTypeData);
+  
       res.status(201).json(newPokemon);
     } catch (error) {
       res.status(400).send({ error: error.message });
     }
   });
+  
+  
+  
+  
 
   router.put('/:id', async (req, res) => {
     try {

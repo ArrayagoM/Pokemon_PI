@@ -26,3 +26,21 @@ export const orderSpeed = () => {
         dispatch({ type: LEGENDARY_POKE, payload: legendary });
     }
   }
+
+  export const createPokemon = (pokemonData) => {
+    const requestOptions = {
+      headers: { 'Content-Type': 'application/json' }
+    };
+  
+    return async (dispatch) => {
+      try {
+        await axios.post('http://localhost:3001/pokemons', pokemonData, requestOptions);
+  
+        // Si la solicitud POST es exitosa, podrías actualizar la lista de pokemones
+        dispatch(allPokedex());
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+  

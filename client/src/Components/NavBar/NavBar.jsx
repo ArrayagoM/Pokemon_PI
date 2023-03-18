@@ -8,8 +8,7 @@ const NavBar = () => {
         <div>
             <span className={style.sing}><Link to={'/'}>Sign off</Link></span>
             <span className={style.about}><Link to={'/about'}>About</Link></span>
-            <span className={style.create}><Link to={'/form'}>Create</Link></span>
-            
+            <span className={style.create}><Link to={'/create'}>Create</Link></span>
         </div>
     )
 }

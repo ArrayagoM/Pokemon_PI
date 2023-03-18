@@ -1,24 +1,30 @@
 .contenedor {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin: 12px;
-    animation: slide 55s linear infinite;
-  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 12px;
+  animation: slide 298s linear infinite;
+}
+.element {
+  border-radius: 60%;
+}
   
-  @keyframes slide {
-    0% {
-        -webkit-transform:  translateX(calc(-240px * 5));
-        transform: translateX(0);
-    }
-    100% {
-        -webkit-transform: translateX(calc(-240px * 5));
-        transform: translateX(calc(-240px * 5)); 
-    }
+@keyframes slide {
+  0% {
+    transform: translateX(calc(-150px * 78));
   }
+    
+  100% {
+    transform: translateX(0); 
+  }
+}
+
 
   .image{
-    width:150px;
+    
+    border-radius: 40%;
+    width:140px;
+    margin: 12px;
   }
 
 

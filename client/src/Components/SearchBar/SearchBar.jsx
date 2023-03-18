@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import Card from "../card/Card";
+import style from './SearchBar.module.css';
+import { Link } from "react-router-dom";
 
 const SearchBar = () => {
   const allPokemons = useSelector((state) => state.allPokemons);
@@ -38,7 +39,14 @@ const SearchBar = () => {
       <input type="text" value={pokemon} onChange={handleSearch} onKeyDown={handleKeyPress} placeholder='Search Pokémon...' />
       {filteredPokemons.length > 0 ? (
         filteredPokemons.map((poke) => (
-          <Card key={poke.id} {...poke} />
+            <Link key={poke.id} to={`/detail/${poke.id}`}><div className={style.conteiner}>
+            <div className={style.element}>
+            <img src={poke.image} alt={poke.name} className={style.image} />
+            <h3 className={style.name} >{poke.name}</h3>
+            <h3 className={style.id}>#{poke.id.toString().padStart(4,"0")}</h3>
+            </div>
+          </div></Link>
+          
         ))
       ) : (
         <p>No se encontró ningún Pokémon.</p>

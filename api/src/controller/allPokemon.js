@@ -21,7 +21,18 @@ const allPokemons = async () => {
   
 const createPokemon = async (pokemonData) => {
     try {
-      const newPokemon = await Pokemon.create(pokemonData);
+      const newPokemon = await Pokemon.create({
+        name: pokemonData.name,
+        image: pokemonData.image,
+        life: pokemonData.life,
+        attack: pokemonData.attack,
+        defense: pokemonData.defense,
+        speed: pokemonData.speed,
+        height: pokemonData.height,
+        weight: pokemonData.weight,
+        types: pokemonData.types
+      });
+      
   
       // if pokemon types are provided, associate them with the new pokemon
       if (pokemonData.types) {
