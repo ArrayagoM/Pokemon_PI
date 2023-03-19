@@ -1,4 +1,4 @@
-import { ALL_POKEMONS, SORT_POKEMON, SORT_ATTACK_LEVEL, SORT_DEFENSE_LEVEL, SORT_SPEED_LEVEL, LEGENDARY_POKE } from "./antion_type";
+import { ALL_POKEMONS,DELETE_POKEMON, SORT_POKEMON, SORT_ATTACK_LEVEL, DELETE_POKEMON_ERROR,  SORT_DEFENSE_LEVEL, SORT_SPEED_LEVEL, LEGENDARY_POKE } from "./antion_type";
 
 const initialState = {
   allPokemons: [],
@@ -12,6 +12,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allPokemons: action.payload
+      };
+      case DELETE_POKEMON:
+      const newPokemons = state.allPokemons.filter(
+        (pokemon) => pokemon.id !== action.payload
+      );
+      return {
+        ...state,
+        allPokemons: newPokemons
+      };
+    case DELETE_POKEMON_ERROR:
+      return {
+        ...state,
+        error: action.payload
       };
       case LEGENDARY_POKE:
         return{

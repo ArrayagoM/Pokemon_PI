@@ -1,4 +1,4 @@
-import { ALL_POKEMONS, SORT_POKEMON, SORT_ATTACK_LEVEL, SORT_DEFENSE_LEVEL, SORT_SPEED_LEVEL, LEGENDARY_POKE } from "./antion_type";
+import { ALL_POKEMONS,DELETE_POKEMON, SORT_POKEMON, SORT_ATTACK_LEVEL, DELETE_POKEMON_ERROR,  SORT_DEFENSE_LEVEL, SORT_SPEED_LEVEL, LEGENDARY_POKE } from "./antion_type";
 import axios from 'axios';
 
 export const allPokedex = () => {
@@ -41,6 +41,24 @@ export const orderSpeed = () => {
       } catch (error) {
         console.log(error);
       }
+    }
+  }
+
+  export const deletePokemon = (id) => {
+    return (dispatch) => {
+      axios.delete(`http://localhost:3001/pokemons/${id}`)
+        .then(() => {
+          dispatch({
+            type: DELETE_POKEMON,
+            payload: id
+          })
+        })
+        .catch(error => {
+          dispatch({
+            type: DELETE_POKEMON_ERROR,
+            payload: error.message
+          })
+        })
     }
   }
   

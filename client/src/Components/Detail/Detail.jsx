@@ -1,10 +1,14 @@
 import React, { useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deletePokemon } from '../../reducer/action';
 import style from './Detail.module.css'
 import { Link } from "react-router-dom";
 
 const Detail = () => {
     const { id } = useParams();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [ pokemon, setPokeon] = useState({});
     const typeColors = {
       normal: '#A8A77A',
@@ -26,6 +30,13 @@ const Detail = () => {
       steel: '#B7B7CE',
       fairy: '#D685AD',
     };
+
+    const handleDelete = (id) => {
+        if (window.confirm('¿Estás seguro de que deseas eliminar este Pokémon?')) {
+          dispatch(deletePokemon(id));
+          navigate('/home');
+        }
+      }
     
 
     useEffect(()=> {
@@ -53,7 +64,7 @@ const Detail = () => {
             </button>
                 <h1 className={style.name}>{pokemon?.name}</h1>
                 <h3 className={style.id}>#{id.toString().padStart(3, "0")}</h3>
-                <div className={style.cont_img} style={{backgroundColor: pokemon?.types && typeColors[pokemon.types[0].name]}}>
+                <div className={style.cont_img} style={{backgroundColor: pokemon?.types && typeColors[pokemon.types[0]?.name]}}>
                 {pokemon && pokemon.types && pokemon.types.map((type, index) => (
                 <span key={index} className={style.type_badge} style={{backgroundColor: typeColors[type.name]}}>{type.name}</span>
                  ))}
@@ -72,6 +83,7 @@ const Detail = () => {
                     <progress className={style.progress} value={pokemon?.speed} max="200"></progress>
                     <h3 className={style.height}>Height: <span>{(pokemon?.height/10).toFixed(1)}</span> cm</h3>
                     <h3 className={style.weight}>Weight: <span>{(pokemon?.weight/10).toFixed(1)}</span> kg</h3>
+                    <button onClick={()=> handleDelete(pokemon.id)}>Delete</button>
                 </div>
             </div>
         </div>

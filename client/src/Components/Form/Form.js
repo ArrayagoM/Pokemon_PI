@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styles from './Form.module.css';
 import { createPokemon } from '../../reducer/action';
 
@@ -27,6 +28,7 @@ const types = [
 
 const Form = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const allPokemons = useSelector((state) => state.allPokemons);
 
   const [formData, setFormData] = useState({
@@ -49,17 +51,21 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const pokemonExists = allPokemons.some(pokemon => pokemon.name.toLowerCase() === formData.name.toLowerCase());
-
+    
     if (pokemonExists) {
       alert(`El pokemon ${formData.name} ya existe.`);
+     event.target.reset();
+     navigate('/home');
       return;
     }
-
-  
-
-    dispatch(createPokemon(formData));
-
+    if (window.confirm('¿Estás seguro de que deseas agregar a este Pokémon?')){
+         dispatch(createPokemon(formData));
+           event.target.reset();
+           navigate('/home');
+    }
+   
   };
+  
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -78,36 +84,38 @@ const Form = () => {
   };
 
   return (
-    <form id="create-pokemon-form" className={styles.form} onSubmit={handleSubmit}>
-    <label htmlFor="name" className={styles.label}>Nombre:</label>
+    <div className={styles.container} >
+      <div className={styles.element}>
+      <form id="create-pokemon-form" className={styles.form} onSubmit={handleSubmit}>
+    <label htmlFor="name" className={styles.label}>Nombre</label>
     <input type="text" id="name" name="name" required className={styles.input} onChange={handleChange} />
 
-    <label htmlFor="image" className={styles.label}>Imagen:</label>
+    <label htmlFor="image" className={styles.label}>Imagen</label>
     <input type="text" id="image" name="image" required className={styles.input} onChange={handleChange} />
 
-    <label htmlFor="life" className={styles.label}>Vida:</label>
+    <label htmlFor="life" className={styles.label}>Vida</label>
     <input type="number" id="life" name="life" required className={styles.input} onChange={handleChange} />
 
-    <label htmlFor="attack" className={styles.label}>Ataque:</label>
+    <label htmlFor="attack" className={styles.label}>Ataque</label>
     <input type="number" id="attack" name="attack" required className={styles.input} onChange={handleChange} />
 
-    <label htmlFor="defense" className={styles.label}>Defensa:</label>
+    <label htmlFor="defense" className={styles.label}>Defensa</label>
     <input type="number" id="defense" name="defense" required className={styles.input} onChange={handleChange} />
 
-    <label htmlFor="speed" className={styles.label}>Velocidad:</label>
+    <label htmlFor="speed" className={styles.label}>Velocidad</label>
     <input type="number" id="speed" name="speed" className={styles.input} onChange={handleChange} />
 
-    <label htmlFor="height" className={styles.label}>Altura:</label>
+    <label htmlFor="height" className={styles.label}>Altura</label>
     <input type="number" id="height" name="height" className={styles.input} onChange={handleChange} />
 
-    <label htmlFor="weight" className={styles.label}>Peso:</label>
+    <label htmlFor="weight" className={styles.label}>Peso</label>
     <input type="number" id="weight" name="weight" className={styles.input} onChange={handleChange} />
 
-    <label htmlFor="types" className={styles.label}>Tipo:</label>
+    <label htmlFor="types" className={styles.label}>Tipo</label>
     <select id="types" name="types[]" multiple className={styles.select} onChange={handleSelectChange}>
         {options}
     </select>
-    <label htmlFor="types" className={styles.label}>Tipo:</label>
+    <label htmlFor="types" className={styles.label}>Tipo</label>
     <select id="types" name="types[]" multiple className={styles.select} onChange={handleSelectChange}>
         {options}
     </select>
@@ -115,6 +123,8 @@ const Form = () => {
     <button type="submit" className={styles.button}>Crear Pokemon</button>
 
     </form>
+      </div>
+    </div>
   );
 };
 
