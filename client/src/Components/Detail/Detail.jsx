@@ -81,7 +81,7 @@ const Detail = () => {
                     <progress className={style.progress} value={pokemon?.defense} max="200"></progress>
                     <h3 className={style.speed}>Speed: </h3>
                     <progress className={style.progress} value={pokemon?.speed} max="200"></progress>
-                    <h3 className={style.height}>Height: <span>{(pokemon?.height/10).toFixed(1)}</span> cm</h3>
+                    <h3 className={style.height}>Height: <span>{(pokemon?.height/10).toFixed(1)}</span>m</h3>
                     <h3 className={style.weight}>Weight: <span>{(pokemon?.weight/10).toFixed(1)}</span> kg</h3>
                     <button onClick={()=> handleDelete(pokemon.id)}>Delete</button>
                 </div>

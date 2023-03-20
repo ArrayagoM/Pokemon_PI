@@ -1,3 +1,10 @@
+.container{
+  background-color: rgba(0, 0, 0, 0.176);
+  width: 150%;
+}
+
+
+
 .contenedor {
   display: flex;
   flex-direction: row;
@@ -21,10 +28,14 @@
 
 
   .image{
-    
     border-radius: 40%;
     width:140px;
     margin: 12px;
+    transition: .3s;
+  }
+
+  .image:hover{
+    transform: scale(1.5);
   }
 
 

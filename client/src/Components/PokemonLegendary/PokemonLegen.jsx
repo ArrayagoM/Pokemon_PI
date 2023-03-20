@@ -20,7 +20,8 @@ const PokeLegen = () => {
   }
 
   return (
-    <div className={style.contenedor}>
+   <div className={style.container}>
+     <div className={style.contenedor}>
       {allLegendary.map((e) => {
        const typeClass = type ? getTypeClass(e.types.map((type)=> type.name).join(',')) : '';
        return (
@@ -32,6 +33,7 @@ const PokeLegen = () => {
        );
       })}
     </div>
+   </div>
   );
 };
 
