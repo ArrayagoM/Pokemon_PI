@@ -2,14 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('../../img/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+   
   }
-  /*Estilos para el componente Home*/
 
-  
-  /*Estilos para el menú*/
   .menu {
     display: none;
     position: absolute;

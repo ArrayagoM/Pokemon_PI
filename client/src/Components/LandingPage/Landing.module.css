@@ -1,84 +1,117 @@
-.contenedor {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f1c40f; 
-  }
 
-  .contenedor{
-    background-image: url('../../img/Pokémon-Super-Mystery-Dungeon1-720x405.webp'); /*cambia este valor por la ruta a tu imagen*/
-    background-size: cover; /*para que la imagen se ajuste a la pantalla*/
-    background-repeat: no-repeat;
-  }
-  
-  .element {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .element h1 {
-    font-size: 2rem;
-    color: #c0392b;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-  }
-  
-  .element button {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .element button:hover {
-    background-color: #c0392b;
-    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-  }
 
-@media only screen and (max-width: 768px) {
-  /* Estilos para pantallas de 768px o menos */
-  body {
-    background-size: contain;
-  }
+.all_container{
+ 
+  display: flex;
+  flex-wrap: wrap;
+border-radius: 16px;
+position: relative;
+background-color: rgba(0, 0, 0, 0.108);
+margin: 0 auto;
+width: 800px;
 }
 
-@media only screen and (max-width: 480px) {
-  /* Estilos para pantallas de 480px o menos */
-  body {
-    background-size: cover;
-  }
+.top_container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.img{
+width: 600px;
+
 }
 
-.toHome {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    transition: all 0.3s ease-in-out;
+.welcome{
+  width: 400px;
+  position: absolute;
+  display: block;
+  font-family: monospace;
+  white-space: nowrap;
+  border-right: 4px solid;
+  width: 27ch;
+  animation: typing 3.5s steps(27), blink .5s infinite step-end alternate;
+  overflow: hidden;
+  top: 0%;
+  left: 40%;
+  color: #c0392b;
 }
 
-.toHome:hover {
-    background-color: #c0392b;
-    box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+@keyframes typing {
+  from { width: 0;}
+}
+@keyframes blink {
+  50% { border-color: transparent;}
 }
 
-.welcome {
-    font-size: 3rem;
-    color: #c0392b;
-    text-shadow: 2px 2px 5px rgba(218, 192, 192, 0.3);
+
+.parrafo{
+  border: 1px solid black;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-.miname {
-    font-size: 1.5rem;
-    color: #e4c7c7;
+.botton_container{
+ 
+}
+
+.botton_element{
+
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  margin: auto;
+}
+.left{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+
+}
+
+.history{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+color: #c0392b;
+}
+.p_history{
+font-family: 'Courier New', Courier, monospace;
+  width: 500px;
+}
+
+.right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.lest{
+  border: 0;
+  color: #c0392b;
+  text-decoration: none;
+  background-image: linear-gradient(150deg,#c0392b,rgb(255, 166, 0),#f6ff00);
+  border-radius: 8px;
+  color: #fff;
+  display: flex;
+  font-size: 48px;
+  padding: 6px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.lest span{
+  background-color: #111;
+  padding: 2px 3px;
+  border-radius: 6px;
+  transition: .3s;
+
+}
+
+.lest:hover span{
+  background: none;
+}
+
+
+.lest:active {
+  transform: scale(0.9);
 }

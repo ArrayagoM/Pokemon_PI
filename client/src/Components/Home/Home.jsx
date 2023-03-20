@@ -14,7 +14,7 @@ const Home = () => {
       <NavBar/>
       <SearchBar/>
       <Cards/>
-      <PokeLegen/> 
+     
     </div>
   )
 }
