@@ -51,7 +51,7 @@ margin-top: auto;
 }
 
 
-.menu_btn > div {
+/* .menu_btn > div {
   background: black;
   height: 2px;
   width: 100%;
@@ -71,4 +71,4 @@ margin-top: auto;
 
 .menu_btn:hover div:last-child{
   transform: rotate(-45deg);
-}
+} */

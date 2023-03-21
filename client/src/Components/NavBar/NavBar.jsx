@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { order, orderAttack, allPokedex, orderDefense, orderSpeed } from '../../reducer/action';
 import pokemonLogo from '../../img/pokemon.png';
 import styles from './NavBar.module.css';
+import SearchBar from '../SearchBar/SearchBar';
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const NavBar = () => {
             <span className={styles.sign}><Link to={'/'}>Sign off</Link></span>
             <span className={styles.about}><Link to={'/about'}>About</Link></span>
             <span className={styles.create}><Link to={'/create'}>Create</Link></span>
+            <SearchBar/>
         </nav>
     );
 };

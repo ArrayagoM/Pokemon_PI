@@ -49,7 +49,7 @@ const SearchBar = () => {
           
         ))
       ) : (
-        <p>No se encontró ningún Pokémon.</p>
+        <p></p>
       )}
     </div>
   );

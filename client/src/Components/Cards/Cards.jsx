@@ -4,6 +4,7 @@ import { allPokedex, IsLegendary } from "../../reducer/action";
 import Card from "../card/Card";
 import style from './Cards.module.css';
 
+
 const Cards = () => {
   const dispatch = useDispatch();
   const allPokemon = useSelector(state => state.allPokemons);
