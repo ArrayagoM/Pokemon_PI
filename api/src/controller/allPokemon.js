@@ -34,7 +34,7 @@ const createPokemon = async (pokemonData) => {
       });
       
   
-      // if pokemon types are provided, associate them with the new pokemon
+     
       if (pokemonData.types) {
         const types = await Type.findAll({
           where: { name: pokemonData.types },

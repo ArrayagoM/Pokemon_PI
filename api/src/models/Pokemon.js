@@ -47,6 +47,10 @@ module.exports = (sequelize) => {
     isLegendary: {
       type: DataTypes.BOOLEAN,
      defaultValue: false
+    },
+    FavoriteId: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   },{
     timestamps: false,

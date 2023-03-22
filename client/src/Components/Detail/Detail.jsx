@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deletePokemon } from '../../reducer/action';
 import style from './Detail.module.css'
-import { Link } from "react-router-dom";
 
 const Detail = () => {
     const { id } = useParams();
@@ -37,7 +36,9 @@ const Detail = () => {
           navigate('/home');
         }
       }
-    
+    function handleClick() {
+        navigate(-1)
+    }
 
     useEffect(()=> {
         fetch(`http://localhost:3001/pokemons/${id}`)
@@ -59,9 +60,7 @@ const Detail = () => {
     return(
         <div>
             <div className={style.container}>
-            <button className={style.Poke_button}>
-                <Link to='/home' className={style.Deatail_link}>X</Link>
-            </button>
+            <button className={style.Poke_button} onClick={handleClick}>X</button>
                 <h1 className={style.name}>{pokemon?.name}</h1>
                 <h3 className={style.id}>#{id.toString().padStart(3, "0")}</h3>
                 <div className={style.cont_img} style={{backgroundColor: pokemon?.types && typeColors[pokemon.types[0]?.name]}}>

@@ -1,17 +1,28 @@
-import { ALL_POKEMONS,DELETE_POKEMON, SORT_POKEMON, SORT_ATTACK_LEVEL, DELETE_POKEMON_ERROR,  SORT_DEFENSE_LEVEL, SORT_SPEED_LEVEL, LEGENDARY_POKE } from "./antion_type";
+import { ALL_POKEMONS,DELETE_POKEMON,
+         SORT_POKEMON,
+         SORT_ATTACK_LEVEL,
+         DELETE_POKEMON_ERROR,
+         SORT_DEFENSE_LEVEL,
+         SORT_SPEED_LEVEL,
+         LEGENDARY_POKE 
+        } from "./antion_type";
 
 const initialState = {
   allPokemons: [],
   sortDirection: "asc", // por defecto, ordenar de la A a la Z
-  allLegendary: []
+  allLegendary: [],
+  initialPokemons: []
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ALL_POKEMONS:
-      return {
-        ...state,
-        allPokemons: action.payload
+  const allPokemons = action.payload;
+  const initialPokemons = allPokemons.filter(pokemon => pokemon.id <= 151);
+  return {
+    ...state,
+    allPokemons: allPokemons,
+    initialPokemons: initialPokemons,
       };
       case DELETE_POKEMON:
       const newPokemons = state.allPokemons.filter(
@@ -31,7 +42,7 @@ const reducer = (state = initialState, action) => {
           ...state,
           allLegendary: action.payload
         }
-    case SORT_POKEMON:
+      case SORT_POKEMON:
       const { sortDirection } = state;
       const sortedPokemons = state.allPokemons.slice().sort((a, b) => {
         const nameA = a.name.toUpperCase();
