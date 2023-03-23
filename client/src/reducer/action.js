@@ -1,4 +1,16 @@
-import { ALL_POKEMONS,DELETE_POKEMON, SORT_POKEMON, SORT_ATTACK_LEVEL, DELETE_POKEMON_ERROR,  SORT_DEFENSE_LEVEL, SORT_SPEED_LEVEL, LEGENDARY_POKE } from "./antion_type";
+import { 
+  ALL_POKEMONS,
+  DELETE_POKEMON, 
+  SORT_POKEMON, 
+  SORT_ATTACK_LEVEL, 
+  DELETE_POKEMON_ERROR,  
+  SORT_DEFENSE_LEVEL, 
+  SORT_SPEED_LEVEL, 
+  LEGENDARY_POKE,
+  ADD_FAVORITE,
+  DELETE_FAVORITE
+ 
+ } from "./antion_type";
 import axios from 'axios';
 
 export const allPokedex = () => {
@@ -20,6 +32,50 @@ export const orderDefense = () => {
 export const orderSpeed = () => {
     return { type: SORT_SPEED_LEVEL }
 }
+
+
+export const addFavorite = (id) => {
+  return async (dispatch) => {
+    try {
+      const fav = await axios.post(`http://localhost:3001/fav/${id}`)
+      dispatch ({type: ADD_FAVORITE, payload: fav})
+    } catch (error) {
+      return {error:error.message}
+    }
+
+  }
+}
+
+export const deleteFavorite = (id) =>  {
+return async (dispatch) => {
+try {
+  const deletePoke = await axios.delete(`http://localhost:3001/fav/${id}`)
+  dispatch ({ type: DELETE_FAVORITE, payload: deletePoke });
+} catch (error) {
+  return { error: error.message }
+}
+}
+}
+
+
+export const getFavorite = () => {
+  return async (dispatch) => {
+    try {
+      const response = await axios('http://localhost:3001/fav');
+      const favorites = response.data;
+
+      // Itera a través de cada objeto de pokemon favorito en la respuesta de la API
+      const pokemonList = favorites.flatMap(favorite => favorite.pokemons);
+
+      return dispatch({ type: ADD_FAVORITE, payload: pokemonList });
+    } catch (error) {
+      return { error: error.message };
+    }
+  }
+}
+
+
+
   export const IsLegendary = () => {
     return async (dispatch) =>{
         const legendary =  (await axios('http://localhost:3001/pokemons/leg/legendary')).data;

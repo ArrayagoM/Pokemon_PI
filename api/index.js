@@ -23,8 +23,8 @@ const { savePokemonData } =  require('./src/controller/sabeApiData');
 const { PORT } =  process.env || 3001
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  savePokemonData();
+conn.sync({ force: false }).then(() => {
+  //savePokemonData();
   server.listen(PORT, () => {
     console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
   });

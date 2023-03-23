@@ -3,8 +3,9 @@ const { addFavorite, favorites, deleteFavorite } =  require('../controller/favor
 const router = Router();
 
 router.post('/:id', async(req, res) => {
-try {
     const { id } = req.params;
+    try {
+   
     const favorite = await addFavorite(id);
     res.status(200).json(favorite);
 } catch (error) {

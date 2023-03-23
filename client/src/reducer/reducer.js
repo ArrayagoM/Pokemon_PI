@@ -4,14 +4,17 @@ import { ALL_POKEMONS,DELETE_POKEMON,
          DELETE_POKEMON_ERROR,
          SORT_DEFENSE_LEVEL,
          SORT_SPEED_LEVEL,
-         LEGENDARY_POKE 
+         LEGENDARY_POKE,
+         ADD_FAVORITE,
+         DELETE_FAVORITE
         } from "./antion_type";
 
 const initialState = {
   allPokemons: [],
   sortDirection: "asc", // por defecto, ordenar de la A a la Z
   allLegendary: [],
-  initialPokemons: []
+  initialPokemons: [],
+  favorites: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +27,15 @@ const reducer = (state = initialState, action) => {
     allPokemons: allPokemons,
     initialPokemons: initialPokemons,
       };
+      case DELETE_FAVORITE: 
+      const deletePokemons = state.favorites.filter(
+        (delet) => delet.id !== action.payload 
+      );
+      return{
+        ...state,
+        favorites: deletePokemons
+
+      }
       case DELETE_POKEMON:
       const newPokemons = state.allPokemons.filter(
         (pokemon) => pokemon.id !== action.payload
@@ -32,6 +44,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         allPokemons: newPokemons
       };
+      case ADD_FAVORITE: 
+      return{
+        ...state,
+        favorites: action.payload
+      }
     case DELETE_POKEMON_ERROR:
       return {
         ...state,

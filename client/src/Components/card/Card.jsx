@@ -1,11 +1,27 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import style from "./Card.module.css";
+import { useSelector } from "react-redux";
+import { useDispatch } from 'react-redux';
+import { deleteFavorite, addFavorite } from '../../reducer/action';
 import { Link } from "react-router-dom";
 import { getTypeClass } from "./utils";
 
 const Card = ({ id, name, image, type }) => {
+  const [favorite, setFavorite] = useState(undefined);
   const typeClass = getTypeClass(type);
   const cardRef = useRef(null);
+  const favorites = useSelector((state) => state.favorites);
+  const dispatch = useDispatch();
+
+  const handleFavorite = () => {
+    if (favorite === undefined) {
+      dispatch(addFavorite(id));
+      setFavorite(true);
+    } else {
+      dispatch(deleteFavorite(id));
+      setFavorite(undefined);
+    }
+  };
 
   useEffect(() => {
     const el = cardRef.current;
@@ -41,17 +57,24 @@ const Card = ({ id, name, image, type }) => {
     };
   }, []);
 
+  const isFavorite = favorites.includes(id);
+
   return (
     <div className={style.container} ref={cardRef}>
-      <Link to={`/detail/${id}`}>
-        <div className={`${style.element} ${style[typeClass]}`}>
-          <h3 className={style.name}>{name}</h3>
+      <button onClick={handleFavorite} className={isFavorite ? `${style.favorite} ${style.isFavorite}` : style.isFavorite}>
+             {isFavorite ? "❤️" : "🤍"}
+      </button>
+
+      <div className={`${style.element} ${style[typeClass]}`}>
+        <h3 className={style.name}>{name}</h3>
+        <Link to={`/detail/${id}`}>
           <img src={image} alt={name} className={style.image} />
-          <h5 className={style.id}>#{id.toString().padStart(3, "0")}</h5>
-        </div>
-      </Link>
+        </Link>
+        <h5 className={style.id}>#{id.toString().padStart(3, "0")}</h5>
+      </div>
     </div>
   );
 };
 
 export default Card;
+

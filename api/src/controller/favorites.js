@@ -1,38 +1,63 @@
-const { Pokemon, Favorite } = require('../db');
-
+const { Pokemon, Favorite, Type, Favorite_Type, Pokemon_favorite } = require('../db');
 
 const favorites = async () => {
   try {
-    const favorite = await Favorite.findAll({
-      include: {
-        model: Pokemon
-      }
+    const fav = await Favorite.findAll({
+      include: [
+        {
+          model: Pokemon,
+          through: Pokemon_favorite,
+          include: {
+            model: Type,
+            through: Favorite_Type
+          }
+        }
+      ]
     });
-    return favorite;
+    return fav  
   } catch (error) {
-    return { error: error.message };
+    return { error: error.message }
   }
-};
+}
 
 const addFavorite = async (id) => {
   try {
-    const pokemon = await Pokemon.findOne({
-      where: {
-        id: id
+    // Verificar si el ID es un número válido
+    if (isNaN(id)) {
+      return "El ID debe ser un número";
+    }
+
+    // Buscar si ya existe un Pokémon con el mismo ID en favoritos
+    const favoritePokemon = await Favorite.findOne({
+      include: {
+        model: Pokemon,
+        where: {
+          id: id
+        }
       }
     });
 
-    if (!pokemon) {
-      return "No se encuentra el ID del pokemon";
-    } else {
-      const newFavorite = await Favorite.create();
-      await newFavorite.addPokemon(pokemon); // Aquí se usa addPokemon para agregar el pokemon al array de pokemones favoritos
-      return "El pokemon se ha agregado a tus favoritos";
+    if (favoritePokemon) {
+      return "El Pokémon ya está en tus favoritos";
     }
+
+    // Buscar el Pokémon por ID
+    const pokemon = await Pokemon.findByPk(id);
+
+    if (!pokemon) {
+      return "No se encuentra el Pokémon con ese ID";
+    }
+
+    // Crear una nueva entrada en la tabla "Favorite"
+    const newFavorite = await Favorite.create({id:id});
+    await newFavorite.addPokemon(pokemon, { through: { pokemonId: pokemon.id } });
+
+    return "El Pokémon se ha agregado a tus favoritos";
   } catch (error) {
     return { error: error.message };
   }
 };
+
 
 
 const deleteFavorite = async (id) => {
@@ -49,10 +74,28 @@ const deleteFavorite = async (id) => {
   }
 };
 
-
-
 module.exports = {
   favorites,
+  deleteFavorite,
   addFavorite,
-  deleteFavorite
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
