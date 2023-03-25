@@ -10,13 +10,14 @@ const Home = () => {
   
 
   return(
+   <div>
+     <NavBar/>
     <div className={styles.container}>
-      <NavBar className={styles.Nav}/>
       <div className={styles.detail}></div>
      <div className={styles.container}>
      <div className={styles.element}>
      <div className={styles.initial}>
-        <h2>primera generacion</h2>
+        <h2 className={styles.primer}>primera generacion</h2>
         <Link to={'/initialPoke'}><img src={initial} alt="" className={styles.img_init} /></Link>
         <div className={styles.par_cont}>
         <p className={styles.par}>La primera generación de Pokémon, también conocida como Generación I, fue introducida en 1996 con el lanzamiento de los videojuegos Pokémon Rojo y Verde en Japón. Esta generación incluyó un total de 151 Pokémon, cada uno con su propio diseño, habilidades y personalidad única. Entre los Pokémon más icónicos de esta generación se encuentran Pikachu, Charizard, Mewtwo y Bulbasaur. Además de los juegos, la primera generación también se expandió a través del anime, el manga y una gran cantidad de merchandising. La Generación I es considerada por muchos fans como la más nostálgica y emblemática, ya que sentó las bases para lo que se convertiría en una de las franquicias más populares y exitosas del mundo.</p>
@@ -37,12 +38,8 @@ const Home = () => {
         </div>
      </div>
      </div>
-      
-    
-      
-     
-     
     </div>
+   </div>
   )
 }
 

@@ -19,6 +19,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+
     case ALL_POKEMONS:
   const allPokemons = action.payload;
   const initialPokemons = allPokemons.filter(pokemon => pokemon.id <= 151);
@@ -35,7 +36,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         favorites: deletePokemons
 
-      }
+      };
+
       case DELETE_POKEMON:
       const newPokemons = state.allPokemons.filter(
         (pokemon) => pokemon.id !== action.payload
@@ -49,6 +51,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         favorites: action.payload
       }
+
     case DELETE_POKEMON_ERROR:
       return {
         ...state,
@@ -78,6 +81,7 @@ const reducer = (state = initialState, action) => {
         allPokemons: sortedPokemons,
         sortDirection: newSortDirection
       };
+
     case SORT_ATTACK_LEVEL:
       const { sortDirection: direction } = state;
       const sortedByAttackLevel = state.allPokemons.slice().sort((a, b) => {
@@ -95,6 +99,7 @@ const reducer = (state = initialState, action) => {
         allPokemons: sortedByAttackLevel,
         sortDirection: newSortDir
       };
+
     case SORT_DEFENSE_LEVEL:
       const { sortDirection: dir } = state;
       const sortedByDefenseLevel = state.allPokemons.slice().sort((a, b) => {
@@ -112,6 +117,7 @@ const reducer = (state = initialState, action) => {
         allPokemons: sortedByDefenseLevel,
         sortDirection: newSortDirDef
       };
+
       case SORT_SPEED_LEVEL:
   const sortedBySpeedLevel = state.allPokemons.slice().sort((a, b) => {
     if (a.speed < b.speed) {

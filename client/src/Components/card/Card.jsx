@@ -7,21 +7,32 @@ import { Link } from "react-router-dom";
 import { getTypeClass } from "./utils";
 
 const Card = ({ id, name, image, type }) => {
-  const [favorite, setFavorite] = useState(undefined);
+  const [favorite, setFavorite] = useState(false);
   const typeClass = getTypeClass(type);
   const cardRef = useRef(null);
   const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
 
   const handleFavorite = () => {
-    if (favorite === undefined) {
-      dispatch(addFavorite(id));
-      setFavorite(true);
-    } else {
-      dispatch(deleteFavorite(id));
-      setFavorite(undefined);
-    }
+  if(favorite) {
+    setFavorite(false);
+    dispatch(deleteFavorite(id))
+  }else {
+    setFavorite(true);
+    dispatch(addFavorite(id));
+  }
   };
+
+  useEffect(() => {
+    if (Array.isArray(favorites)) {
+      favorites.forEach((fav) => {
+        if (fav.id === id) {
+          setFavorite(true);
+        }
+      });
+    }
+  }, [favorites, id]);
+  
 
   useEffect(() => {
     const el = cardRef.current;
@@ -57,13 +68,15 @@ const Card = ({ id, name, image, type }) => {
     };
   }, []);
 
-  const isFavorite = favorites.includes(id);
+
 
   return (
     <div className={style.container} ref={cardRef}>
-      <button onClick={handleFavorite} className={isFavorite ? `${style.favorite} ${style.isFavorite}` : style.isFavorite}>
-             {isFavorite ? "❤️" : "🤍"}
-      </button>
+    { favorite ? (
+    <button onClick={handleFavorite}>❤️</button>
+    ) : (
+      <button onClick={handleFavorite} >🤍</button>
+    )  }
 
       <div className={`${style.element} ${style[typeClass]}`}>
         <h3 className={style.name}>{name}</h3>

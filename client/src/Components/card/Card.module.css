@@ -36,8 +36,9 @@
 
   .name {
     position: absolute;
+    font-family: 'Courier New', Courier, monospace;
     top: 70%;
-    left: 50%;
+    left: 35%;
     font-size: 1rem;
     margin-bottom: 1rem;
     color: #333;

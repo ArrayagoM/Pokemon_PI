@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import './PokeSpinner.css'
 import { allPokedex, IsLegendary, getFavorite } from './reducer/action'
 import { useDispatch } from 'react-redux'; 
 import Landing from './Components/LandingPage/Landing';
@@ -25,12 +26,12 @@ useEffect(()=> {
   dispatch(allPokedex());
   dispatch(IsLegendary());
   dispatch(getFavorite());
-setLoading(false);
 },[])
 
   return (
     <div className="App">
-      {loading ? "" : "" }
+      {loading ? <div className='PokeSpinner' >Cargando Pkémones...</div>  : "" }
+      
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} ></Route>

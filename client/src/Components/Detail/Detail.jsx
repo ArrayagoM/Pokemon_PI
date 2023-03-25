@@ -85,6 +85,10 @@ const Detail = () => {
                     <button onClick={()=> handleDelete(pokemon.id)}>Delete</button>
                 </div>
             </div>
+
+            <div>
+            
+            </div>
         </div>
     );
 }
